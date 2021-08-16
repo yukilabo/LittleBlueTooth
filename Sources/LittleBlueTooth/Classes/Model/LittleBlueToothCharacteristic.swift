@@ -52,7 +52,7 @@ public struct LittleBlueToothCharacteristic: Identifiable {
 #if os(watchOS)
         self.service = characteristic.service!.uuid
 #else
-        self.service = characteristic.service!.uuid
+        self.service = characteristic.service.uuid
 #endif
         self.cbCharacteristic = characteristic
         self.properties = Properties(properties: characteristic.properties)
