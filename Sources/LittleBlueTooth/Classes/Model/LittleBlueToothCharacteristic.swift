@@ -49,7 +49,11 @@ public struct LittleBlueToothCharacteristic: Identifiable {
     /// - returns: An instance of `LittleBlueToothCharacteristic`.
     public init(with characteristic: CBCharacteristic) {
         self.id = characteristic.uuid
+#if os(watchOS)
         self.service = characteristic.service!.uuid
+#else
+        self.service = characteristic.service!.uuid
+#endif
         self.cbCharacteristic = characteristic
         self.properties = Properties(properties: characteristic.properties)
     }
